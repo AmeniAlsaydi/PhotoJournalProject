@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol ImageCellDelegate: AnyObject { // why any object?
+    func didPressEdit(_ imageCell: ImageCell)
+}
+
+
+
 class ImageCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var delegate: ImageCellDelegate?
     
     func confiureCell(image: ImageObject) {
         captionLabel.text = image.caption
@@ -24,5 +31,12 @@ class ImageCell: UICollectionViewCell {
         }
         imageView.image = photo
     }
+    
+    @IBAction func didPressEdit(_ sender: UIButton) {
+        delegate?.didPressEdit(self)
+        
+    }
+    
+    
     
 }
