@@ -41,7 +41,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="7nw-Pm-wZY">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="7nw-Pm-wZY" customClass="ImageCell" customModule="PhotoJournalProject" customModuleProvider="target">
                                         <rect key="frame" x="29.5" y="0.0" width="355" height="359"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DES-pc-FKr">
@@ -87,6 +87,11 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="355" height="359"/>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="mSO-vm-8mo" id="oUm-MF-PfO"/>
+                                            <outlet property="dateLabel" destination="tZR-KN-r0R" id="HOG-mP-iN4"/>
+                                            <outlet property="imageView" destination="ghe-fm-QzZ" id="hOQ-SJ-jiW"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
