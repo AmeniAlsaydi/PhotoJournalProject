@@ -18,27 +18,34 @@ class PhotoJournalController: UIViewController {
         collectionView.delegate = self
     }
     
+    private var jouralEntries = [JournalEntry]() {
+        didSet {
+            collectionView.reloadData() // reload collection view fucntions once an entry is added
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let VC = segue.source as? EntryViewController else {
+        guard let EntryVC = segue.destination as? EntryViewController else {
             print("couldnt get Entry VC")
             return
         }
-        VC.delegate = self
-        
+        EntryVC.delegate = self
     }
-
-
 }
 
 extension PhotoJournalController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return jouralEntries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ImageCell else {
             fatalError("no custom cell")
         }
+        
+        let journalEntry = jouralEntries[indexPath.row]
+        
+        cell.confiureCell(image: journalEntry)
         
         return cell 
     }
@@ -78,6 +85,8 @@ extension PhotoJournalController: EntryVCDelegate {
         // I'll pass it into the doc directory
         // but then am i passing it to an array of journal entries and reloading the collection view
         // OR am i just inserting it into the collection view, and into the doc direcory?
+        
+        jouralEntries.append(journalEntry)
         
     }
     

@@ -13,8 +13,7 @@ protocol EntryVCDelegate: AnyObject {
 }
 
 class EntryViewController: UIViewController {
-    
-    
+
     // outlets
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
