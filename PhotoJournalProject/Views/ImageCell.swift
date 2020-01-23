@@ -20,7 +20,7 @@ class ImageCell: UICollectionViewCell {
     
     var delegate: ImageCellDelegate?
     
-    func confiureCell(image: ImageObject) {
+    func confiureCell(image: JournalEntry) {
         captionLabel.text = image.caption
         dateLabel.text = image.date.description
         

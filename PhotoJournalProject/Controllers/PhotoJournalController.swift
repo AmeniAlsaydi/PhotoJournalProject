@@ -17,6 +17,15 @@ class PhotoJournalController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let VC = segue.source as? EntryViewController else {
+            print("couldnt get Entry VC")
+            return
+        }
+        VC.delegate = self
+        
+    }
 
 
 }
@@ -61,4 +70,16 @@ extension PhotoJournalController: UICollectionViewDelegateFlowLayout {
         
         return 5
     }
+}
+
+extension PhotoJournalController: EntryVCDelegate {
+    func didCreateJournalEntry(journalEntry: JournalEntry) {
+        // at this point I have the newly created journal entry
+        // I'll pass it into the doc directory
+        // but then am i passing it to an array of journal entries and reloading the collection view
+        // OR am i just inserting it into the collection view, and into the doc direcory?
+        
+    }
+    
+    
 }

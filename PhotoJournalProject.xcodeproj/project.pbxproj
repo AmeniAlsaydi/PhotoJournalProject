@@ -14,7 +14,7 @@
 		B703511523D879BF005FBC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B703511423D879BF005FBC4B /* Assets.xcassets */; };
 		B703511823D879BF005FBC4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B703511623D879BF005FBC4B /* LaunchScreen.storyboard */; };
 		B703512023D88609005FBC4B /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703511F23D88609005FBC4B /* EntryViewController.swift */; };
-		B703512B23D89678005FBC4B /* ImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512A23D89678005FBC4B /* ImageObject.swift */; };
+		B703512B23D89678005FBC4B /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512A23D89678005FBC4B /* JournalEntry.swift */; };
 		B703512D23D896DA005FBC4B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512C23D896DA005FBC4B /* ImageCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 		B703511723D879BF005FBC4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B703511923D879BF005FBC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B703511F23D88609005FBC4B /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
-		B703512A23D89678005FBC4B /* ImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageObject.swift; sourceTree = "<group>"; };
+		B703512A23D89678005FBC4B /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		B703512C23D896DA005FBC4B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +95,7 @@
 		B703512823D89636005FBC4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B703512A23D89678005FBC4B /* ImageObject.swift */,
+				B703512A23D89678005FBC4B /* JournalEntry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 				B703511023D879BB005FBC4B /* PhotoJournalController.swift in Sources */,
 				B703512023D88609005FBC4B /* EntryViewController.swift in Sources */,
 				B703510C23D879BB005FBC4B /* AppDelegate.swift in Sources */,
-				B703512B23D89678005FBC4B /* ImageObject.swift in Sources */,
+				B703512B23D89678005FBC4B /* JournalEntry.swift in Sources */,
 				B703510E23D879BB005FBC4B /* SceneDelegate.swift in Sources */,
 				B703512D23D896DA005FBC4B /* ImageCell.swift in Sources */,
 			);

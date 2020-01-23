@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ImageObject: Codable {
+struct JournalEntry: Codable {
     let imageData: Data
     let caption: String
     let date: Date // date it was added
