@@ -12,8 +12,6 @@ protocol ImageCellDelegate: AnyObject { // why any object?
     func didPressEdit(_ imageCell: ImageCell)
 }
 
-
-
 class ImageCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!

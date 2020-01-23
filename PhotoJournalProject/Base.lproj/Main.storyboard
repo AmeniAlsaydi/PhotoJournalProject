@@ -34,7 +34,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fKF-eM-3OG">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fgb-hz-2rJ">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fgb-hz-2rJ">
                                     <size key="itemSize" width="355" height="359"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -53,7 +53,7 @@
                                                     <color key="tintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSO-vm-8mo">
-                                                    <rect key="frame" x="8" y="297" width="339" height="17"/>
+                                                    <rect key="frame" x="8" y="310.5" width="339" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -65,19 +65,19 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="didPressEdit:" destination="7nw-Pm-wZY" eventType="touchUpInside" id="Y0d-Is-2IH"/>
+                                                        <action selector="didPressEdit:" destination="7nw-Pm-wZY" eventType="touchUpInside" id="9Ag-KX-6mt"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZR-KN-r0R">
-                                                    <rect key="frame" x="8" y="334" width="339" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <rect key="frame" x="8" y="337.5" width="339" height="13.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="tZR-KN-r0R" secondAttribute="bottom" constant="8" id="6zL-Fq-l14"/>
-                                                <constraint firstItem="czM-y1-CRT" firstAttribute="top" secondItem="ghe-fm-QzZ" secondAttribute="bottom" constant="10" id="DI4-jd-PEx"/>
+                                                <constraint firstItem="czM-y1-CRT" firstAttribute="top" secondItem="ghe-fm-QzZ" secondAttribute="bottom" constant="10" id="EDC-93-cMf"/>
                                                 <constraint firstItem="tZR-KN-r0R" firstAttribute="leading" secondItem="DES-pc-FKr" secondAttribute="leading" constant="8" id="GwU-b5-NdG"/>
                                                 <constraint firstItem="ghe-fm-QzZ" firstAttribute="leading" secondItem="DES-pc-FKr" secondAttribute="leading" id="LZY-mE-sVm"/>
                                                 <constraint firstAttribute="trailing" secondItem="tZR-KN-r0R" secondAttribute="trailing" constant="8" id="N56-HF-BYL"/>
@@ -85,16 +85,16 @@
                                                 <constraint firstItem="ghe-fm-QzZ" firstAttribute="top" secondItem="DES-pc-FKr" secondAttribute="top" id="YJ8-tO-csl"/>
                                                 <constraint firstItem="ghe-fm-QzZ" firstAttribute="height" secondItem="DES-pc-FKr" secondAttribute="height" multiplier="0.7" id="ZZF-GW-Q9w"/>
                                                 <constraint firstAttribute="trailing" secondItem="ghe-fm-QzZ" secondAttribute="trailing" id="cFd-ax-gEy"/>
-                                                <constraint firstItem="tZR-KN-r0R" firstAttribute="top" secondItem="mSO-vm-8mo" secondAttribute="bottom" constant="20" id="ccP-C9-Ich"/>
+                                                <constraint firstItem="tZR-KN-r0R" firstAttribute="top" secondItem="mSO-vm-8mo" secondAttribute="bottom" constant="10" id="ccP-C9-Ich"/>
                                                 <constraint firstItem="mSO-vm-8mo" firstAttribute="leading" secondItem="DES-pc-FKr" secondAttribute="leading" constant="8" id="h48-1C-BBT"/>
                                                 <constraint firstAttribute="trailing" secondItem="czM-y1-CRT" secondAttribute="trailing" constant="20" id="ht4-O3-n6A"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="355" height="359"/>
                                         <connections>
-                                            <outlet property="captionLabel" destination="mSO-vm-8mo" id="oUm-MF-PfO"/>
-                                            <outlet property="dateLabel" destination="tZR-KN-r0R" id="HOG-mP-iN4"/>
-                                            <outlet property="imageView" destination="ghe-fm-QzZ" id="hOQ-SJ-jiW"/>
+                                            <outlet property="captionLabel" destination="mSO-vm-8mo" id="Ma3-ky-A3g"/>
+                                            <outlet property="dateLabel" destination="tZR-KN-r0R" id="AsP-PA-GyM"/>
+                                            <outlet property="imageView" destination="ghe-fm-QzZ" id="aWe-wx-vih"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -114,7 +114,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Photos" id="pKV-c2-LHJ"/>
                     <connections>
-                        <outlet property="collectionView" destination="fKF-eM-3OG" id="f93-zf-lWw"/>
+                        <outlet property="collectionView" destination="fKF-eM-3OG" id="mYh-ms-aRR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

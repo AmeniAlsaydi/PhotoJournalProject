@@ -49,7 +49,7 @@ extension PhotoJournalController: UICollectionViewDelegateFlowLayout {
         
         let itemWidth: CGFloat = (maxWidth - totalSpacing)/numberOfItems
         
-        return CGSize(width: itemWidth, height: itemWidth)
+        return CGSize(width: itemWidth, height: itemWidth) 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -58,6 +58,7 @@ extension PhotoJournalController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
         return 5
     }
 }
