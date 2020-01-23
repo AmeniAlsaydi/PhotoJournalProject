@@ -52,14 +52,14 @@
                                                     <rect key="frame" x="0.0" y="1" width="355" height="249"/>
                                                     <color key="tintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSO-vm-8mo">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSO-vm-8mo">
                                                     <rect key="frame" x="8" y="310.5" width="339" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czM-y1-CRT">
-                                                    <rect key="frame" x="315" y="261.5" width="20" height="22"/>
+                                                    <rect key="frame" x="325" y="261.5" width="20" height="22"/>
                                                     <color key="tintColor" red="0.79701307929999998" green="0.73376669839999997" blue="0.87012224739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" image="ellipsis.circle" catalog="system">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,7 +87,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="ghe-fm-QzZ" secondAttribute="trailing" id="cFd-ax-gEy"/>
                                                 <constraint firstItem="tZR-KN-r0R" firstAttribute="top" secondItem="mSO-vm-8mo" secondAttribute="bottom" constant="10" id="ccP-C9-Ich"/>
                                                 <constraint firstItem="mSO-vm-8mo" firstAttribute="leading" secondItem="DES-pc-FKr" secondAttribute="leading" constant="8" id="h48-1C-BBT"/>
-                                                <constraint firstAttribute="trailing" secondItem="czM-y1-CRT" secondAttribute="trailing" constant="20" id="ht4-O3-n6A"/>
+                                                <constraint firstAttribute="trailing" secondItem="czM-y1-CRT" secondAttribute="trailing" constant="10" id="ht4-O3-n6A"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="355" height="359"/>
@@ -160,6 +160,9 @@
                                 <items>
                                     <barButtonItem title="Cancel" id="KbG-D0-hKY">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="0rv-eH-LvB" id="8Ru-la-Bgz"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZFn-D1-kVW"/>
                                     <barButtonItem title="Save" id="W5W-0E-QLo">

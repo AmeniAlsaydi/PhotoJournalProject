@@ -18,6 +18,13 @@ class ImageCell: UICollectionViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        imageView.layer.cornerRadius = imageView.frame.height/13
+
+    }
+    
     var delegate: ImageCellDelegate?
     
     func confiureCell(image: JournalEntry) {

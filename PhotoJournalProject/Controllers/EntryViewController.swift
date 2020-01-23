@@ -63,11 +63,15 @@ class EntryViewController: UIViewController {
         // pass to delegate (I think)
         // would this vc be the delegating object in this case?
         delegate?.didCreateJournalEntry(journalEntry: journalEntry)
-        dump(journalEntry)
+        
+        // TODO: fix this so that the default image and caption arent added once the save button is pressed.
+        
+        self.dismiss(animated: true, completion: nil)
         
     }
-    
-    //TODO: Deal with Cancel button.
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
 }
 

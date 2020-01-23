@@ -16,6 +16,8 @@
 		B703512023D88609005FBC4B /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703511F23D88609005FBC4B /* EntryViewController.swift */; };
 		B703512B23D89678005FBC4B /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512A23D89678005FBC4B /* JournalEntry.swift */; };
 		B703512D23D896DA005FBC4B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512C23D896DA005FBC4B /* ImageCell.swift */; };
+		B7DA60A423DA3EDA002E41A2 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA60A323DA3EDA002E41A2 /* FileManager+Extensions.swift */; };
+		B7DA60A623DA3EF3002E41A2 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA60A523DA3EF3002E41A2 /* PersistenceHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		B703511F23D88609005FBC4B /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		B703512A23D89678005FBC4B /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		B703512C23D896DA005FBC4B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		B7DA60A323DA3EDA002E41A2 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
+		B7DA60A523DA3EF3002E41A2 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		B703510A23D879BB005FBC4B /* PhotoJournalProject */ = {
 			isa = PBXGroup;
 			children = (
+				B7DA60A223DA3EB8002E41A2 /* Data Persistance */,
 				B703512923D89657005FBC4B /* Views */,
 				B703512823D89636005FBC4B /* Models */,
 				B703512223D8863F005FBC4B /* Supporting files */,
@@ -106,6 +111,15 @@
 				B703512C23D896DA005FBC4B /* ImageCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B7DA60A223DA3EB8002E41A2 /* Data Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				B7DA60A323DA3EDA002E41A2 /* FileManager+Extensions.swift */,
+				B7DA60A523DA3EF3002E41A2 /* PersistenceHelper.swift */,
+			);
+			path = "Data Persistance";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,11 +194,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B703511023D879BB005FBC4B /* PhotoJournalController.swift in Sources */,
+				B7DA60A423DA3EDA002E41A2 /* FileManager+Extensions.swift in Sources */,
 				B703512023D88609005FBC4B /* EntryViewController.swift in Sources */,
 				B703510C23D879BB005FBC4B /* AppDelegate.swift in Sources */,
 				B703512B23D89678005FBC4B /* JournalEntry.swift in Sources */,
 				B703510E23D879BB005FBC4B /* SceneDelegate.swift in Sources */,
 				B703512D23D896DA005FBC4B /* ImageCell.swift in Sources */,
+				B7DA60A623DA3EF3002E41A2 /* PersistenceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
