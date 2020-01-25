@@ -107,4 +107,30 @@ class PersistenceHelper {
       throw DataPersistenceError.deletingError(error)
     }
   }
+    
+    // Update
+    
+    @discardableResult // Silences the warning if the return value is not used by the caller
+    public func update(_ oldItem: JournalEntry, with newItem: JournalEntry) -> Bool  {
+        // find index of the oldItem and replace it with the newItem
+        if let index = journalEntries.firstIndex(of: oldItem) { 
+            
+            let result = update(newItem, at: index)
+            return result
+        }
+        return false
+    }
+    
+    @discardableResult // Silences the warning if the return value is noy used by the caller
+    public func update(_ item: JournalEntry, at index: Int) -> Bool {
+        journalEntries[index] = item
+        // save to doc directory
+        
+        do {
+            try save()
+            return true
+        } catch {
+            return false
+        }
+    }
 }

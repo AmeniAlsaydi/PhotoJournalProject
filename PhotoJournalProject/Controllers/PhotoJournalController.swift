@@ -38,11 +38,10 @@ class PhotoJournalController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let entryVC = segue.destination as? CreatePhotoController else {
-            print("couldnt get Entry VC")
-            return
+        guard let createVC = segue.destination as? CreatePhotoController else {
+            fatalError("couldnt get createVC")
         }
-        entryVC.delegate = self
+        createVC.delegate = self
     }
 }
 
@@ -63,7 +62,6 @@ extension PhotoJournalController: UICollectionViewDataSource {
         
         return cell 
     }
-    
 }
 
 extension PhotoJournalController: UICollectionViewDelegateFlowLayout {
@@ -93,7 +91,17 @@ extension PhotoJournalController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension PhotoJournalController: EntryVCDelegate {
+extension PhotoJournalController: CreateVCDelegate {
+    func didUpdateJournalEntry(oldEntry: JournalEntry, newEntry: JournalEntry) {
+        // Does not come in here IDK WHY??
+        
+        print("old entry caption: \(oldEntry.caption)")
+        print("new entry caption: \(newEntry.caption)")
+        
+        dataPersistence.update(oldEntry, with: newEntry)
+        loadJournalEntries()
+    }
+    
     func didCreateJournalEntry(journalEntry: JournalEntry) {
         // at this point I have the newly created journal entry
         // I passed it to an array of journal entries and reloading the collection view [below]
@@ -104,11 +112,10 @@ extension PhotoJournalController: EntryVCDelegate {
         } catch {
             print("couldnt save: \(error)")
         }
+        
         // I'll pass it into the doc directory
         // OR am i just inserting it into the collection view, and into the doc direcory?
-    }
-    
-    
+    }   
 }
 
 extension PhotoJournalController: ImageCellDelegate {
@@ -121,9 +128,6 @@ extension PhotoJournalController: ImageCellDelegate {
         
         let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self]
             alertAction in
-            print("editing...")
-            
-            // in here include the action to be done if the user selects edit: which is the segue to the entry VC controller but with the cells info already populated.
             
             guard let createPhotoController = self?.storyboard?.instantiateViewController(identifier: "CreatePhotoController") as? CreatePhotoController else {
                 // developer error
@@ -137,10 +141,14 @@ extension PhotoJournalController: ImageCellDelegate {
         }
         
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { // [weak self] 
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self]
             alertAction in
-            print("deleting...")
-            // in here include the action to be done if the user selects Delete
+            
+            let index = self?.jouralEntries.firstIndex(of: photoJournal) ?? 0
+            
+            self?.jouralEntries.remove(at: index)
+            
+            try? self?.dataPersistence.delete(entry: index)
             
         }
         

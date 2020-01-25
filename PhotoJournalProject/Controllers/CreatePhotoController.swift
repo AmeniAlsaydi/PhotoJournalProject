@@ -13,8 +13,10 @@ enum PhotoState: String {
   case existingPhoto
 }
 
-protocol EntryVCDelegate: AnyObject {
+protocol CreateVCDelegate: AnyObject {
     func didCreateJournalEntry(journalEntry: JournalEntry)
+    func didUpdateJournalEntry(oldEntry: JournalEntry, newEntry: JournalEntry)
+    
 }
 
 class CreatePhotoController: UIViewController {
@@ -27,7 +29,7 @@ class CreatePhotoController: UIViewController {
     
     private var imagePickerController = UIImagePickerController()
     
-    var delegate: EntryVCDelegate?
+    weak var delegate: CreateVCDelegate?
     
     public private(set) var photoState = PhotoState.newPhoto // by default its a newPhoto
     
@@ -43,6 +45,7 @@ class CreatePhotoController: UIViewController {
         captionTextView.delegate = self
         imagePickerController.delegate = self
         checkCamera()
+        print("view did load caption: \(photo?.caption)") // hey
         updateUI()
         
     }
@@ -58,21 +61,17 @@ class CreatePhotoController: UIViewController {
     
     private func updateUI() {
         
-        switch photoState {
-        case .existingPhoto:
+        if photoState == .existingPhoto {
             guard let photo = photo else {
                 fatalError("no photo journal passed")
             }
             captionTextView.text = photo.caption
             imageView.image = UIImage(data: photo.imageData)
             saveButton.title = "Update"
-        case .newPhoto:
-            break
         }
         
     }
     
-
     // actions
     
     @IBAction func libraryButtonPressed(_ sender: UIBarButtonItem) {
@@ -90,26 +89,42 @@ class CreatePhotoController: UIViewController {
     
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        // create the imageObject
+        
+        // TODO: fix this so that the default image and caption arent added once the save button is pressed.
+
+        // create the journalEntry
         guard let imageData = imageView.image?.jpegData(compressionQuality: 1.0) else {
         print("Couldnt convert image to data")
         return
         }
+
         let journalEntry = JournalEntry(imageData: imageData, caption: captionTextView.text, date: Date())
-        // pass to delegate (I think)
-        // would this vc be the delegating object in this case?
-        delegate?.didCreateJournalEntry(journalEntry: journalEntry)
         
-        // TODO: fix this so that the default image and caption arent added once the save button is pressed.
+        guard let photo = photo else {
+            fatalError("no photo journal passed")
+        }
+        
+        
+        
+        switch photoState {
+        case .newPhoto:
+            delegate?.didCreateJournalEntry(journalEntry: journalEntry)
+        case .existingPhoto:
+            delegate?.didUpdateJournalEntry(oldEntry: photo, newEntry: journalEntry)
+            
+        }
         
         self.dismiss(animated: true, completion: nil)
         
     }
+    
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
 }
+
+// ==================================================================================
 
 extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) { // Any
@@ -130,12 +145,6 @@ extension CreatePhotoController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
-        
     }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        resignFirstResponder()
-    }
-    
     
 }
