@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum PhotoState {
+enum PhotoState: String {
   case newPhoto
   case existingPhoto
 }
@@ -23,11 +23,19 @@ class CreatePhotoController: UIViewController {
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     private var imagePickerController = UIImagePickerController()
     
     var delegate: EntryVCDelegate?
     
-    public private(set) var photo = PhotoState.newPhoto // by default its a newPhoto
+    public private(set) var photoState = PhotoState.newPhoto // by default its a newPhoto
+    
+    var photo: JournalEntry? {
+        didSet {
+            photoState = PhotoState.existingPhoto
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +43,33 @@ class CreatePhotoController: UIViewController {
         captionTextView.delegate = self
         imagePickerController.delegate = self
         checkCamera()
+        updateUI()
         
     }
     
-    func checkCamera() {
+    private func checkCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             // is the source of image OF TYPE CAMERA availble
             cameraButton.isEnabled = true
         } else {
             cameraButton.isEnabled = false
         }
+    }
+    
+    private func updateUI() {
+        
+        switch photoState {
+        case .existingPhoto:
+            guard let photo = photo else {
+                fatalError("no photo journal passed")
+            }
+            captionTextView.text = photo.caption
+            imageView.image = UIImage(data: photo.imageData)
+            saveButton.title = "Update"
+        case .newPhoto:
+            break
+        }
+        
     }
     
 

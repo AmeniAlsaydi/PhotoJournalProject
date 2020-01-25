@@ -193,6 +193,7 @@
                         <outlet property="cameraButton" destination="p8W-K1-s6h" id="jkX-gW-Kct"/>
                         <outlet property="captionTextView" destination="Lp1-Ib-i76" id="nh5-kR-YJR"/>
                         <outlet property="imageView" destination="rN6-qs-2Uq" id="RgI-Wx-s38"/>
+                        <outlet property="saveButton" destination="W5W-0E-QLo" id="hch-6r-WQY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjw-VD-OcY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

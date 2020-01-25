@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ImageCellDelegate: AnyObject { // why any object?
-    func didPressEdit(_ imageCell: ImageCell)
+    func didPressEdit(_ photoJournal: JournalEntry)
 }
 
 class ImageCell: UICollectionViewCell {
@@ -27,7 +27,11 @@ class ImageCell: UICollectionViewCell {
     
     var delegate: ImageCellDelegate?
     
+    var photoJournal: JournalEntry?
+    
     func confiureCell(image: JournalEntry) {
+        photoJournal = image
+        
         captionLabel.text = image.caption
         dateLabel.text = image.date.description
         
@@ -39,7 +43,7 @@ class ImageCell: UICollectionViewCell {
     
     @IBAction func didPressEdit(_ sender: UIButton) {
         
-        delegate?.didPressEdit(self)
+        delegate?.didPressEdit(photoJournal!) // danger force unwrapping
         
     }
     

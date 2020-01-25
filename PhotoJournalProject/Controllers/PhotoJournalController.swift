@@ -21,7 +21,7 @@ class PhotoJournalController: UIViewController {
         
         loadJournalEntries()
     }
-
+    
     
     private var jouralEntries = [JournalEntry]() {
         didSet {
@@ -104,8 +104,6 @@ extension PhotoJournalController: EntryVCDelegate {
         } catch {
             print("couldnt save: \(error)")
         }
-        
-
         // I'll pass it into the doc directory
         // OR am i just inserting it into the collection view, and into the doc direcory?
     }
@@ -114,39 +112,44 @@ extension PhotoJournalController: EntryVCDelegate {
 }
 
 extension PhotoJournalController: ImageCellDelegate {
-    func didPressEdit(_ imageCell: ImageCell) {
+    func didPressEdit(_ photoJournal: JournalEntry) {
         
-              // present the action sheet with the options edit delete cancel
-              let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-              
-              let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self]
-                  alertAction in
-                  print("editing...")
-                  
-                  // story board id for the controller: CreatePhotoController
-                  
-                  // in here include the action to be done if the user selects edit: which is the segue to the entry VC controller but with the cells info already populated.
-                  
-//                  guard let createPhotoController = storyboard?.instantiateViewController(identifier: "CreatePhotoController") as? CreatePhotoController else {
-//                             // developer error
-//                             fatalError("could not downcast to CreatePhotoController")
-//                         }
-
-              }
-              
-              
-              let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self]
-                  alertAction in
-                  print("deleting...")
-                  // in here include the action to be done if the user selects Delete
-
-              }
-              
-              let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-              
-              alertController.addAction(editAction)
-              alertController.addAction(deleteAction)
-              alertController.addAction(cancelAction)
+        // at this point we have the photo's info from the cell.
+        
+        // present the action sheet with the options edit - delete - cancel
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self]
+            alertAction in
+            print("editing...")
+            
+            // in here include the action to be done if the user selects edit: which is the segue to the entry VC controller but with the cells info already populated.
+            
+            guard let createPhotoController = self?.storyboard?.instantiateViewController(identifier: "CreatePhotoController") as? CreatePhotoController else {
+                // developer error
+                fatalError("could not downcast to CreatePhotoController")
+            }
+            
+           createPhotoController.photo = photoJournal // coming from the cell
+            // in the createVC have a property observer for the photo var, and when its set change the photoState to exisiting? 
+            self?.present(createPhotoController, animated: true)
+            
+        }
+        
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { // [weak self] 
+            alertAction in
+            print("deleting...")
+            // in here include the action to be done if the user selects Delete
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        alertController.addAction(editAction)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
         present(alertController, animated: true)
     }
     
