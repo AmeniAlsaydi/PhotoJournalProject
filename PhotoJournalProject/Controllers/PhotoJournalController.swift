@@ -11,6 +11,8 @@ import UIKit
 class PhotoJournalController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     private let dataPersistence = PersistenceHelper(filename: "journalEntries.plist")
     
@@ -37,12 +39,32 @@ class PhotoJournalController: UIViewController {
         }
     }
     
+    private func showSettingsVC() {
+        
+        guard let settingsVC = self.storyboard?.instantiateViewController(identifier: "SettingsController") as? SettingsController else {
+            // developer error
+            fatalError("could not downcast to SettingsController")
+        }
+        settingsVC.delegate = self
+        present(settingsVC,animated: true)
+        
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         guard let createVC = segue.destination as? CreatePhotoController else {
-            fatalError("couldnt get createVC")
+            return
         }
         createVC.delegate = self
+        //settingsVC.delegate = self
     }
+    
+    @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
+        showSettingsVC()
+        
+    }
+    
 }
 
 extension PhotoJournalController: UICollectionViewDataSource {
@@ -164,3 +186,11 @@ extension PhotoJournalController: ImageCellDelegate {
     
 }
 
+extension PhotoJournalController: SettingsDelegate {
+    func didSelectColor(color: UIColor) {
+        
+        view.backgroundColor = color
+    }
+    
+    
+}
