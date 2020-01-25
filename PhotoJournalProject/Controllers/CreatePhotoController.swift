@@ -8,11 +8,16 @@
 
 import UIKit
 
+enum PhotoState {
+  case newPhoto
+  case existingPhoto
+}
+
 protocol EntryVCDelegate: AnyObject {
     func didCreateJournalEntry(journalEntry: JournalEntry)
 }
 
-class EntryViewController: UIViewController {
+class CreatePhotoController: UIViewController {
 
     // outlets
     @IBOutlet weak var captionTextView: UITextView!
@@ -22,18 +27,24 @@ class EntryViewController: UIViewController {
     
     var delegate: EntryVCDelegate?
     
+    public private(set) var photo = PhotoState.newPhoto // by default its a newPhoto
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        captionTextView.delegate = self
         imagePickerController.delegate = self
+        checkCamera()
         
+    }
+    
+    func checkCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             // is the source of image OF TYPE CAMERA availble
             cameraButton.isEnabled = true
         } else {
             cameraButton.isEnabled = false
         }
-
     }
     
 
@@ -75,7 +86,7 @@ class EntryViewController: UIViewController {
     
 }
 
-extension EntryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) { // Any
         // we need to access the UIImagePickerController.InfoKey.orignalImage key to get the UIImage that was selected
         
@@ -87,5 +98,19 @@ extension EntryViewController: UIImagePickerControllerDelegate, UINavigationCont
         
         dismiss(animated: true)
     }
+    
+}
+
+extension CreatePhotoController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        resignFirstResponder()
+    }
+    
     
 }

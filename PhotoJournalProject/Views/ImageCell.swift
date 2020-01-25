@@ -38,9 +38,12 @@ class ImageCell: UICollectionViewCell {
     }
     
     @IBAction func didPressEdit(_ sender: UIButton) {
+        
         delegate?.didPressEdit(self)
         
     }
+    
+    
     
     
     

@@ -13,7 +13,7 @@
 		B703511323D879BB005FBC4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B703511123D879BB005FBC4B /* Main.storyboard */; };
 		B703511523D879BF005FBC4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B703511423D879BF005FBC4B /* Assets.xcassets */; };
 		B703511823D879BF005FBC4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B703511623D879BF005FBC4B /* LaunchScreen.storyboard */; };
-		B703512023D88609005FBC4B /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703511F23D88609005FBC4B /* EntryViewController.swift */; };
+		B703512023D88609005FBC4B /* CreatePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703511F23D88609005FBC4B /* CreatePhotoController.swift */; };
 		B703512B23D89678005FBC4B /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512A23D89678005FBC4B /* JournalEntry.swift */; };
 		B703512D23D896DA005FBC4B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512C23D896DA005FBC4B /* ImageCell.swift */; };
 		B7DA60A423DA3EDA002E41A2 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA60A323DA3EDA002E41A2 /* FileManager+Extensions.swift */; };
@@ -29,7 +29,7 @@
 		B703511423D879BF005FBC4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B703511723D879BF005FBC4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B703511923D879BF005FBC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B703511F23D88609005FBC4B /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		B703511F23D88609005FBC4B /* CreatePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePhotoController.swift; sourceTree = "<group>"; };
 		B703512A23D89678005FBC4B /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		B703512C23D896DA005FBC4B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		B7DA60A323DA3EDA002E41A2 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				B703510F23D879BB005FBC4B /* PhotoJournalController.swift */,
-				B703511F23D88609005FBC4B /* EntryViewController.swift */,
+				B703511F23D88609005FBC4B /* CreatePhotoController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 			files = (
 				B703511023D879BB005FBC4B /* PhotoJournalController.swift in Sources */,
 				B7DA60A423DA3EDA002E41A2 /* FileManager+Extensions.swift in Sources */,
-				B703512023D88609005FBC4B /* EntryViewController.swift in Sources */,
+				B703512023D88609005FBC4B /* CreatePhotoController.swift in Sources */,
 				B703510C23D879BB005FBC4B /* AppDelegate.swift in Sources */,
 				B703512B23D89678005FBC4B /* JournalEntry.swift in Sources */,
 				B703510E23D879BB005FBC4B /* SceneDelegate.swift in Sources */,

@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="692.75362318840587" y="117.85714285714285"/>
         </scene>
-        <!--Entry View Controller-->
+        <!--Create Photo Controller-->
         <scene sceneID="UQP-Wh-vHM">
             <objects>
-                <viewController id="0rv-eH-LvB" customClass="EntryViewController" customModule="PhotoJournalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePhotoController" id="0rv-eH-LvB" customClass="CreatePhotoController" customModule="PhotoJournalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QaU-J6-RzK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

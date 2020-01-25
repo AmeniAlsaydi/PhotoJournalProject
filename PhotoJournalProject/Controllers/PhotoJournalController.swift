@@ -38,7 +38,7 @@ class PhotoJournalController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let entryVC = segue.destination as? EntryViewController else {
+        guard let entryVC = segue.destination as? CreatePhotoController else {
             print("couldnt get Entry VC")
             return
         }
@@ -59,6 +59,7 @@ extension PhotoJournalController: UICollectionViewDataSource {
         let journalEntry = jouralEntries[indexPath.row]
         
         cell.confiureCell(image: journalEntry)
+        cell.delegate = self
         
         return cell 
     }
@@ -107,10 +108,48 @@ extension PhotoJournalController: EntryVCDelegate {
 
         // I'll pass it into the doc directory
         // OR am i just inserting it into the collection view, and into the doc direcory?
-        
-        
-        
     }
     
     
 }
+
+extension PhotoJournalController: ImageCellDelegate {
+    func didPressEdit(_ imageCell: ImageCell) {
+        
+              // present the action sheet with the options edit delete cancel
+              let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+              
+              let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self]
+                  alertAction in
+                  print("editing...")
+                  
+                  // story board id for the controller: CreatePhotoController
+                  
+                  // in here include the action to be done if the user selects edit: which is the segue to the entry VC controller but with the cells info already populated.
+                  
+//                  guard let createPhotoController = storyboard?.instantiateViewController(identifier: "CreatePhotoController") as? CreatePhotoController else {
+//                             // developer error
+//                             fatalError("could not downcast to CreatePhotoController")
+//                         }
+
+              }
+              
+              
+              let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self]
+                  alertAction in
+                  print("deleting...")
+                  // in here include the action to be done if the user selects Delete
+
+              }
+              
+              let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+              
+              alertController.addAction(editAction)
+              alertController.addAction(deleteAction)
+              alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
+    
+}
+
