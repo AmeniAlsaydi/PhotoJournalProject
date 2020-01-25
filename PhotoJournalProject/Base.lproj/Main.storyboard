@@ -25,7 +25,7 @@
                                     <barButtonItem image="plus" catalog="system" id="asa-L2-fa9">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <segue destination="0rv-eH-LvB" kind="presentation" id="0wl-Ro-evB"/>
+                                            <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="1AM-RL-9q6"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -208,11 +208,11 @@
             <objects>
                 <viewController storyboardIdentifier="CreatePhotoController" id="0rv-eH-LvB" customClass="CreatePhotoController" customModule="PhotoJournalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QaU-J6-RzK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OUI-nD-oei">
-                                <rect key="frame" x="0.0" y="759" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <items>
                                     <barButtonItem image="photo.on.rectangle" catalog="system" id="GaT-Qn-yFI">
                                         <color key="tintColor" red="0.79701307929999998" green="0.73376669839999997" blue="0.87012224739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -238,7 +238,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16q-1k-u6f">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <barButtonItem title="Cancel" id="KbG-D0-hKY">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

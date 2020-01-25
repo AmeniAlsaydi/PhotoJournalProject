@@ -41,11 +41,11 @@ class CreatePhotoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveButton.isEnabled = false
         
         captionTextView.delegate = self
         imagePickerController.delegate = self
         checkCamera()
-        print("view did load caption: \(photo?.caption)") // hey
         updateUI()
         
     }
@@ -69,7 +69,6 @@ class CreatePhotoController: UIViewController {
             imageView.image = UIImage(data: photo.imageData)
             saveButton.title = "Update"
         }
-        
     }
     
     // actions
@@ -93,6 +92,7 @@ class CreatePhotoController: UIViewController {
         // TODO: fix this so that the default image and caption arent added once the save button is pressed.
 
         // create the journalEntry
+        
         guard let imageData = imageView.image?.jpegData(compressionQuality: 1.0) else {
         print("Couldnt convert image to data")
         return
@@ -100,18 +100,15 @@ class CreatePhotoController: UIViewController {
 
         let journalEntry = JournalEntry(imageData: imageData, caption: captionTextView.text, date: Date())
         
-        guard let photo = photo else {
-            fatalError("no photo journal passed")
-        }
-        
-        
-        
         switch photoState {
         case .newPhoto:
-            delegate?.didCreateJournalEntry(journalEntry: journalEntry)
+            delegate?.didCreateJournalEntry(journalEntry: journalEntry) // works
         case .existingPhoto:
-            delegate?.didUpdateJournalEntry(oldEntry: photo, newEntry: journalEntry)
+            guard let photo = photo else { 
+                fatalError("no photo journal passed")
+            }
             
+            delegate?.didUpdateJournalEntry(oldEntry: photo, newEntry: journalEntry)
         }
         
         self.dismiss(animated: true, completion: nil)
@@ -123,8 +120,6 @@ class CreatePhotoController: UIViewController {
     }
     
 }
-
-// ==================================================================================
 
 extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) { // Any
@@ -144,7 +139,15 @@ extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationCo
 extension CreatePhotoController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
+        
+        switch photoState {
+        case .existingPhoto:
+            break
+        case .newPhoto:
+            textView.text = ""
+        }
+        
+        saveButton.isEnabled = true
     }
     
 }

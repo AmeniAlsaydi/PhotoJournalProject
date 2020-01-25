@@ -29,11 +29,18 @@ class ImageCell: UICollectionViewCell {
     
     var photoJournal: JournalEntry?
     
+    lazy var dateFormatter:  DateFormatter = {
+      let formatter = DateFormatter()
+      formatter.dateFormat = "MMM d, yyyy"
+      formatter.timeZone = .current
+      return formatter
+    }()
+    
     func confiureCell(image: JournalEntry) {
         photoJournal = image
         
         captionLabel.text = image.caption
-        dateLabel.text = image.date.description
+        dateLabel.text = dateFormatter.string(from: image.date)
         
         guard let photo = UIImage(data: image.imageData) else {
             return

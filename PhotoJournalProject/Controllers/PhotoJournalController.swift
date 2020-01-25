@@ -51,19 +51,26 @@ class PhotoJournalController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  
+    private func showCreateVC() {
         
-        guard let createVC = segue.destination as? CreatePhotoController else {
-            return
+        guard let createVC = self.storyboard?.instantiateViewController(identifier: "CreatePhotoController") as? CreatePhotoController else {
+            // developer error
+            fatalError("could not downcast to CreatePhotoController")
         }
         createVC.delegate = self
-        //settingsVC.delegate = self
+        present(createVC, animated: true)
     }
     
     @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
         showSettingsVC()
         
     }
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        showCreateVC()
+    }
+    
     
 }
 
@@ -115,11 +122,7 @@ extension PhotoJournalController: UICollectionViewDelegateFlowLayout {
 
 extension PhotoJournalController: CreateVCDelegate {
     func didUpdateJournalEntry(oldEntry: JournalEntry, newEntry: JournalEntry) {
-        // Does not come in here IDK WHY??
-        
-        print("old entry caption: \(oldEntry.caption)")
-        print("new entry caption: \(newEntry.caption)")
-        
+    
         dataPersistence.update(oldEntry, with: newEntry)
         loadJournalEntries()
     }
@@ -151,12 +154,15 @@ extension PhotoJournalController: ImageCellDelegate {
         let editAction = UIAlertAction(title: "Edit", style: .default) { [weak self]
             alertAction in
             
+            // Does not work when I use the showCreateVC()
             guard let createPhotoController = self?.storyboard?.instantiateViewController(identifier: "CreatePhotoController") as? CreatePhotoController else {
                 // developer error
                 fatalError("could not downcast to CreatePhotoController")
             }
             
-           createPhotoController.photo = photoJournal // coming from the cell
+            createPhotoController.delegate = self 
+            
+            createPhotoController.photo = photoJournal // coming from the cell
             // in the createVC have a property observer for the photo var, and when its set change the photoState to exisiting? 
             self?.present(createPhotoController, animated: true)
             
@@ -188,8 +194,7 @@ extension PhotoJournalController: ImageCellDelegate {
 
 extension PhotoJournalController: SettingsDelegate {
     func didSelectColor(color: UIColor) {
-        
-        view.backgroundColor = color
+        collectionView.backgroundColor = color
     }
     
     
