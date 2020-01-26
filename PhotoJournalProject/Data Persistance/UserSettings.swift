@@ -33,16 +33,27 @@ class UserSetting {
     
     func updateColor(with color: Int) {
         UserDefaults.standard.set(color, forKey: UserSettingKey.backgroundColor)
-        
     }
     
     func getColor() -> Int? {
-        
         guard let color = UserDefaults.standard.object(forKey: UserSettingKey.backgroundColor) as? Int else {
             
            return nil
         }
         return color
+    }
+    
+    func updateDirection(with direction: Direction) {
+        UserDefaults.standard.set(direction.rawValue, forKey: UserSettingKey.direction)
+        
+    }
+    
+    func getDirection() -> String? {
+        
+        guard let direction = UserDefaults.standard.object(forKey: UserSettingKey.direction) as? String else {
+           return nil
+        }
+        return direction
     }
     
 }

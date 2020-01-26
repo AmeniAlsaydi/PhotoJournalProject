@@ -29,40 +29,28 @@ class SettingsController: UIViewController {
     @IBOutlet weak var pinkButton: UIButton!
     @IBOutlet weak var greenButton: UIButton!
     @IBOutlet weak var yellowButon: UIButton!
+    @IBOutlet weak var sideButton: UIButton!
+    @IBOutlet weak var upButton: UIButton!
     
-    var buttons = [UIButton]()
+    lazy var buttons: [UIButton] = [pinkButton, greenButton, yellowButon, sideButton, upButton]
     
-    var backgroundColor: UIColor? {
-        didSet {
-            // store in user defaults
-        }
-    }
-    var direction = Direction.vertical {
-        didSet {
-            // store in user defaults 
-            
-        }
-    }
+    var backgroundColor: UIColor?
+    var direction = Direction.vertical
     
     var delegate: SettingsDelegate? // making this a weak didnt work
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillLayoutSubviews() {
-        buttons = [pinkButton, greenButton, yellowButon]
-        
-        
-        buttons.map { $0.layer.cornerRadius = ($0.frame.width ?? 1)/2 }
+        _ = buttons.map { $0.layer.cornerRadius = ($0.frame.width )/2 }
     }
     
     @IBAction func colorWasSelected(_ sender: UIButton) {
         backgroundColor = sender.backgroundColor
         
         // sender.setImage(UIImage(systemName: "checkmark.circle"), for: .normal) // works but doesnt disappear if another disappears.
-        print(backgroundColor)
         
         let color = ColorName(rawValue: sender.tag) ?? .purple
         delegate?.didSelectColor(backgroundColor: backgroundColor ?? .red, colorName: color)
@@ -80,6 +68,9 @@ class SettingsController: UIViewController {
         }
         
         delegate?.didSelectDirection(direction: direction)
+        UserSetting.shared.updateDirection(with: direction)
+        
+        
         
     }
     

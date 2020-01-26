@@ -25,8 +25,6 @@ class PhotoJournalController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UINavigationBar.appearance().backgroundColor = UIColor.green
-
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -55,6 +53,18 @@ class PhotoJournalController: UIViewController {
             toolbar.barTintColor = mustard
         default:
             print("no default color")
+        }
+        
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        let direction = UserSetting.shared.getDirection() ?? "vertical"
+        
+        switch Direction(rawValue: direction) {
+        case .horizontal:
+            layout.scrollDirection = .horizontal
+        case .vertical:
+            layout.scrollDirection = .vertical
+        case .none:
+            layout.scrollDirection = .vertical
         }
     }
     

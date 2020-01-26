@@ -161,10 +161,8 @@ extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         imageView.image = image
-        
         dismiss(animated: true)
     }
-    
 }
 
 extension CreatePhotoController: UITextViewDelegate {
