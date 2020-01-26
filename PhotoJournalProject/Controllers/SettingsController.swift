@@ -8,8 +8,14 @@
 
 import UIKit
 
+enum Direction: String {
+    case horizontal
+    case vertical
+}
+
 protocol SettingsDelegate: AnyObject {
     func didSelectColor(color: UIColor)
+    func didSelectDirection(direction: Direction)
 }
 
 class SettingsController: UIViewController {
@@ -18,7 +24,17 @@ class SettingsController: UIViewController {
     @IBOutlet weak var greenButton: UIButton!
     @IBOutlet weak var yellowButon: UIButton!
     
-    var backgroundColor: UIColor?
+    var backgroundColor: UIColor? {
+        didSet {
+            // store in user defaults
+        }
+    }
+    var direction = Direction.vertical {
+        didSet {
+            // store in user defaults 
+            
+        }
+    }
     
     var delegate: SettingsDelegate? // making this a weak didnt work
     
@@ -42,8 +58,19 @@ class SettingsController: UIViewController {
         
         delegate?.didSelectColor(color: backgroundColor ?? .red)
         
-        // print(backgroundColor)
+    }
+    
+    
+    @IBAction func directionWasSelected(_ sender: UIButton) {
+        if sender.tag == 0 {
+            direction = Direction.horizontal
+        } else if sender.tag == 1 {
+            direction = Direction.vertical
+        }
+        
+        delegate?.didSelectDirection(direction: direction)
         
     }
+    
 
 }

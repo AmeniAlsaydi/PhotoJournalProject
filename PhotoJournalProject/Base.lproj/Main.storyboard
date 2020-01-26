@@ -138,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BACKGROUND COLOR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IV-t0-hg9">
-                                <rect key="frame" x="20" y="185" width="394" height="21"/>
+                                <rect key="frame" x="20" y="185" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -177,18 +177,53 @@
                                     <action selector="colorWasSelected:" destination="HdS-Cm-3U8" eventType="touchUpInside" id="3Gs-nx-TYZ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCROLL DIRECTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrU-Nf-gH7">
+                                <rect key="frame" x="20" y="321" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvu-He-DYT">
+                                <rect key="frame" x="35" y="362" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="DPf-6d-lgJ"/>
+                                    <constraint firstAttribute="height" constant="55" id="oP9-e6-hVT"/>
+                                </constraints>
+                                <state key="normal" image="2-way-arrow.side"/>
+                                <connections>
+                                    <action selector="directionWasSelected:" destination="HdS-Cm-3U8" eventType="touchUpInside" id="qKK-xK-xUb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="465-A7-lEP">
+                                <rect key="frame" x="130" y="362" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="Cap-v0-Aeo"/>
+                                    <constraint firstAttribute="height" constant="55" id="VRE-iq-WKE"/>
+                                </constraints>
+                                <state key="normal" image="2-way-arrow.up"/>
+                                <connections>
+                                    <action selector="directionWasSelected:" destination="HdS-Cm-3U8" eventType="touchUpInside" id="87f-aM-kCO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Vvu-He-DYT" firstAttribute="leading" secondItem="aLV-UJ-JH8" secondAttribute="leading" constant="35" id="4Rj-MK-LiV"/>
                             <constraint firstItem="3IV-t0-hg9" firstAttribute="leading" secondItem="aLV-UJ-JH8" secondAttribute="leading" constant="20" id="CqT-Bu-ejW"/>
                             <constraint firstItem="3IV-t0-hg9" firstAttribute="top" secondItem="aLV-UJ-JH8" secondAttribute="top" constant="45" id="Gs9-dj-xGS"/>
                             <constraint firstItem="GU7-tb-C9v" firstAttribute="centerX" secondItem="5Ud-pg-VDi" secondAttribute="centerX" id="IKp-96-eis"/>
+                            <constraint firstItem="465-A7-lEP" firstAttribute="leading" secondItem="Vvu-He-DYT" secondAttribute="trailing" constant="40" id="Jdv-Rp-oHy"/>
                             <constraint firstItem="S1X-ks-Uvk" firstAttribute="leading" secondItem="GU7-tb-C9v" secondAttribute="trailing" constant="95" id="K2P-gI-yRV"/>
                             <constraint firstItem="o0j-YC-Ckb" firstAttribute="top" secondItem="3IV-t0-hg9" secondAttribute="bottom" constant="20" id="Lbj-su-qEv"/>
                             <constraint firstItem="GU7-tb-C9v" firstAttribute="top" secondItem="3IV-t0-hg9" secondAttribute="bottom" constant="20" id="NHa-eT-yQI"/>
                             <constraint firstItem="GU7-tb-C9v" firstAttribute="leading" secondItem="o0j-YC-Ckb" secondAttribute="trailing" constant="95" id="Q2N-SD-loq"/>
+                            <constraint firstItem="HrU-Nf-gH7" firstAttribute="leading" secondItem="aLV-UJ-JH8" secondAttribute="leading" constant="20" id="VOT-za-baf"/>
                             <constraint firstItem="S1X-ks-Uvk" firstAttribute="top" secondItem="3IV-t0-hg9" secondAttribute="bottom" constant="20" id="XLK-JD-fpY"/>
-                            <constraint firstItem="aLV-UJ-JH8" firstAttribute="trailing" secondItem="3IV-t0-hg9" secondAttribute="trailing" id="y6u-mb-rUE"/>
+                            <constraint firstItem="aLV-UJ-JH8" firstAttribute="trailing" secondItem="HrU-Nf-gH7" secondAttribute="trailing" constant="20" id="fTB-bH-l5a"/>
+                            <constraint firstItem="HrU-Nf-gH7" firstAttribute="top" secondItem="o0j-YC-Ckb" secondAttribute="bottom" constant="50" id="fwV-Eu-0Nb"/>
+                            <constraint firstItem="Vvu-He-DYT" firstAttribute="top" secondItem="HrU-Nf-gH7" secondAttribute="bottom" constant="20" id="qBs-j0-uBn"/>
+                            <constraint firstItem="465-A7-lEP" firstAttribute="top" secondItem="HrU-Nf-gH7" secondAttribute="bottom" constant="20" id="unl-Bl-2P3"/>
+                            <constraint firstItem="aLV-UJ-JH8" firstAttribute="trailing" secondItem="3IV-t0-hg9" secondAttribute="trailing" constant="20" id="zTd-iW-3ON"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aLV-UJ-JH8"/>
                     </view>
@@ -212,7 +247,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OUI-nD-oei">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem image="photo.on.rectangle" catalog="system" id="GaT-Qn-yFI">
                                         <color key="tintColor" red="0.79701307929999998" green="0.73376669839999997" blue="0.87012224739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -322,6 +357,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="2-way-arrow.side" width="159" height="145"/>
+        <image name="2-way-arrow.up" width="180" height="155"/>
         <image name="camera" catalog="system" width="64" height="48"/>
         <image name="ellipsis.circle" catalog="system" width="64" height="60"/>
         <image name="gear" catalog="system" width="64" height="58"/>

@@ -17,6 +17,7 @@
 		B703512B23D89678005FBC4B /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512A23D89678005FBC4B /* JournalEntry.swift */; };
 		B703512D23D896DA005FBC4B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703512C23D896DA005FBC4B /* ImageCell.swift */; };
 		B7C9803723DCBD1A00385C22 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C9803623DCBD1A00385C22 /* SettingsController.swift */; };
+		B7C9803923DD481400385C22 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C9803823DD481400385C22 /* UserSettings.swift */; };
 		B7DA60A423DA3EDA002E41A2 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA60A323DA3EDA002E41A2 /* FileManager+Extensions.swift */; };
 		B7DA60A623DA3EF3002E41A2 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DA60A523DA3EF3002E41A2 /* PersistenceHelper.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		B703512A23D89678005FBC4B /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		B703512C23D896DA005FBC4B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		B7C9803623DCBD1A00385C22 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		B7C9803823DD481400385C22 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		B7DA60A323DA3EDA002E41A2 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		B7DA60A523DA3EF3002E41A2 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 			children = (
 				B7DA60A323DA3EDA002E41A2 /* FileManager+Extensions.swift */,
 				B7DA60A523DA3EF3002E41A2 /* PersistenceHelper.swift */,
+				B7C9803823DD481400385C22 /* UserSettings.swift */,
 			);
 			path = "Data Persistance";
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				B7C9803723DCBD1A00385C22 /* SettingsController.swift in Sources */,
 				B703511023D879BB005FBC4B /* PhotoJournalController.swift in Sources */,
 				B7DA60A423DA3EDA002E41A2 /* FileManager+Extensions.swift in Sources */,
+				B7C9803923DD481400385C22 /* UserSettings.swift in Sources */,
 				B703512023D88609005FBC4B /* CreatePhotoController.swift in Sources */,
 				B703510C23D879BB005FBC4B /* AppDelegate.swift in Sources */,
 				B703512B23D89678005FBC4B /* JournalEntry.swift in Sources */,

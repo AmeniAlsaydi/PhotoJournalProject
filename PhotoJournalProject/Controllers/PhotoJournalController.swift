@@ -12,11 +12,9 @@ import UIKit
 class PhotoJournalController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     private let dataPersistence = PersistenceHelper(filename: "journalEntries.plist")
-    
     private var jouralEntries = [JournalEntry]() {
            didSet {
                collectionView.reloadData() // reload collection view fucntions once an entry is added // instead have a function that appendsit (inserts)
@@ -47,15 +45,12 @@ class PhotoJournalController: UIViewController {
         }
         settingsVC.delegate = self
         present(settingsVC,animated: true)
-        
-        
     }
     
   
     private func showCreateVC() {
         
         guard let createVC = self.storyboard?.instantiateViewController(identifier: "CreatePhotoController") as? CreatePhotoController else {
-            // developer error
             fatalError("could not downcast to CreatePhotoController")
         }
         createVC.delegate = self
@@ -64,7 +59,6 @@ class PhotoJournalController: UIViewController {
     
     @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
         showSettingsVC()
-        
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -132,16 +126,11 @@ extension PhotoJournalController: CreateVCDelegate {
         // I passed it to an array of journal entries and reloading the collection view [below]
         jouralEntries.append(journalEntry)
         
-        // here
-        
         do {
             try dataPersistence.create(entry: journalEntry)
         } catch {
             print("couldnt save: \(error)")
         }
-        
-        // I'll pass it into the doc directory
-        // OR am i just inserting it into the collection view, and into the doc direcory?
     }   
 }
 
@@ -167,7 +156,6 @@ extension PhotoJournalController: ImageCellDelegate {
             createPhotoController.photo = photoJournal // coming from the cell
             // in the createVC have a property observer for the photo var, and when its set change the photoState to exisiting? 
             self?.present(createPhotoController, animated: true)
-            
         }
         
         
@@ -184,8 +172,8 @@ extension PhotoJournalController: ImageCellDelegate {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         
-        alertController.addAction(editAction)
         alertController.addAction(deleteAction)
+        alertController.addAction(editAction)
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true)
@@ -193,6 +181,18 @@ extension PhotoJournalController: ImageCellDelegate {
 }
 
 extension PhotoJournalController: SettingsDelegate {
+    func didSelectDirection(direction: Direction) {
+        
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
+        switch direction {
+        case .horizontal:
+            layout.scrollDirection = .horizontal
+        case .vertical:
+            layout.scrollDirection = .vertical
+        }
+    }
+    
     func didSelectColor(color: UIColor) {
         collectionView.backgroundColor = color
     }

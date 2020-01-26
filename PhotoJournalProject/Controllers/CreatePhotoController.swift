@@ -56,11 +56,9 @@ class CreatePhotoController: UIViewController {
     
     @objc private func doneClicked() {
         view.endEditing(true)
-        
     }
     
     private func addDoneToKeyBoard() {
-        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let donebutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done , target: self, action: #selector(self.doneClicked))
@@ -164,8 +162,6 @@ extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationCo
         }
         imageView.image = image
         
-        
-        
         dismiss(animated: true)
     }
     
@@ -184,10 +180,9 @@ extension CreatePhotoController: UITextViewDelegate {
         
         saveButton.isEnabled = true
     }
-    
 }
 
-// pass a size size and returns an image
+
 extension UIImage {
     func resizeImage(to width: CGFloat, height: CGFloat) -> UIImage {
         let size = CGSize(width: width, height: height)
