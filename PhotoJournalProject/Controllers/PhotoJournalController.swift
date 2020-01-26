@@ -13,6 +13,7 @@ class PhotoJournalController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var toolbar: UIToolbar!
     
     private let dataPersistence = PersistenceHelper(filename: "journalEntries.plist")
     private var jouralEntries = [JournalEntry]() {
@@ -23,10 +24,15 @@ class PhotoJournalController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UINavigationBar.appearance().backgroundColor = UIColor.green
+
         collectionView.dataSource = self
         collectionView.delegate = self
         
         loadJournalEntries()
+        
+        view.backgroundColor = UserSetting.shared.getDefaults(key: UserSettingKey.backgroundColor) ?? .yellow
     }
     
     private func loadJournalEntries() {
@@ -105,7 +111,7 @@ extension PhotoJournalController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         // padding sround collectionview
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -193,8 +199,12 @@ extension PhotoJournalController: SettingsDelegate {
         }
     }
     
-    func didSelectColor(color: UIColor) {
-        collectionView.backgroundColor = color
+    func didSelectColor(backgroundColor: UIColor, colorName: ColorName) {
+        
+        //change view color
+        view.backgroundColor = backgroundColor
+        // change tool bar color
+        toolbar.barTintColor = backgroundColor
     }
     
     

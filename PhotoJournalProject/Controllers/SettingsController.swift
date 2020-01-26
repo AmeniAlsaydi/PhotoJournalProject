@@ -8,13 +8,19 @@
 
 import UIKit
 
+enum ColorName: Int {
+    case purple = 0
+    case green = 1
+    case yellow = 2
+}
+
 enum Direction: String {
     case horizontal
     case vertical
 }
 
 protocol SettingsDelegate: AnyObject {
-    func didSelectColor(color: UIColor)
+    func didSelectColor(backgroundColor: UIColor, colorName: ColorName)
     func didSelectDirection(direction: Direction)
 }
 
@@ -23,6 +29,8 @@ class SettingsController: UIViewController {
     @IBOutlet weak var pinkButton: UIButton!
     @IBOutlet weak var greenButton: UIButton!
     @IBOutlet weak var yellowButon: UIButton!
+    
+    var buttons = [UIButton]()
     
     var backgroundColor: UIColor? {
         didSet {
@@ -44,19 +52,23 @@ class SettingsController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        let buttons = [pinkButton, greenButton, yellowButon]
+        buttons = [pinkButton, greenButton, yellowButon]
         
         
-        buttons.map { $0?.layer.cornerRadius = ($0?.frame.width ?? 1)/2 }
-
+        buttons.map { $0.layer.cornerRadius = ($0.frame.width ?? 1)/2 }
     }
     
     @IBAction func colorWasSelected(_ sender: UIButton) {
         backgroundColor = sender.backgroundColor
         
         // sender.setImage(UIImage(systemName: "checkmark.circle"), for: .normal) // works but doesnt disappear if another disappears.
+        // print(backgroundColor)
         
-        delegate?.didSelectColor(color: backgroundColor ?? .red)
+        let color = ColorName(rawValue: sender.tag) ?? .purple
+        delegate?.didSelectColor(backgroundColor: backgroundColor ?? .red, colorName: color)
+        
+        UserSetting.shared.updateDefaults(with: backgroundColor, key: UserSettingKey.backgroundColor)
+        
         
     }
     

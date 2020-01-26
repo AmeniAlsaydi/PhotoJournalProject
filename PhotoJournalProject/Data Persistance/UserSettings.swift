@@ -20,12 +20,12 @@ class UserSetting {
     
     static let shared = UserSetting()
     
-    func updateDefaults<T> (with item: T, key: UserSettingKey) {
+    func updateDefaults<T> (with item: T, key: String) {
         UserDefaults.standard.set(item, forKey: key)
     }
     
-    func getDefaults<T>() -> T? {
-        guard let defaultValue = UserDefaults.standard.object(forKey: UserSettingKey.backgroundColor) as? T else {
+    func getDefaults<T>(key: String) -> T? {
+        guard let defaultValue = UserDefaults.standard.object(forKey: key) as? T else {
             return nil
         }
         return defaultValue
