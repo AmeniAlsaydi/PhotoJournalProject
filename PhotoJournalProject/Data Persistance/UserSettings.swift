@@ -31,4 +31,18 @@ class UserSetting {
         return defaultValue
     }
     
+    func updateColor(with color: Int) {
+        UserDefaults.standard.set(color, forKey: UserSettingKey.backgroundColor)
+        
+    }
+    
+    func getColor() -> Int? {
+        
+        guard let color = UserDefaults.standard.object(forKey: UserSettingKey.backgroundColor) as? Int else {
+            
+           return nil
+        }
+        return color
+    }
+    
 }

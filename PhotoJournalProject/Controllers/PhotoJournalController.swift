@@ -31,8 +31,31 @@ class PhotoJournalController: UIViewController {
         collectionView.delegate = self
         
         loadJournalEntries()
+        applySettingsChoices()
         
-        view.backgroundColor = UserSetting.shared.getDefaults(key: UserSettingKey.backgroundColor) ?? .yellow
+    }
+    
+    private func applySettingsChoices() {
+        
+        let lightPurple = UIColor(displayP3Red: 0.865902, green: 0.807813, blue: 0.889489, alpha: 1)
+        let lightGreen = UIColor(displayP3Red: 0.705874, green: 0.875112, blue: 0.809852, alpha: 1)
+        let mustard = UIColor(displayP3Red: 0.877272, green: 0.835568, blue: 0.180645, alpha: 1)
+    
+        let colorNum = UserSetting.shared.getColor()
+        
+        switch colorNum {
+        case 0:
+            view.backgroundColor = lightPurple
+            toolbar.barTintColor = lightPurple
+        case 1:
+            view.backgroundColor = lightGreen
+            toolbar.barTintColor = lightGreen
+        case 2:
+            view.backgroundColor = mustard
+            toolbar.barTintColor = mustard
+        default:
+            print("no default color")
+        }
     }
     
     private func loadJournalEntries() {
@@ -70,8 +93,6 @@ class PhotoJournalController: UIViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         showCreateVC()
     }
-    
-    
 }
 
 extension PhotoJournalController: UICollectionViewDataSource {
@@ -201,11 +222,7 @@ extension PhotoJournalController: SettingsDelegate {
     
     func didSelectColor(backgroundColor: UIColor, colorName: ColorName) {
         
-        //change view color
         view.backgroundColor = backgroundColor
-        // change tool bar color
         toolbar.barTintColor = backgroundColor
     }
-    
-    
 }

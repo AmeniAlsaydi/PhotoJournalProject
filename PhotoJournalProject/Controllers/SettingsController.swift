@@ -62,13 +62,12 @@ class SettingsController: UIViewController {
         backgroundColor = sender.backgroundColor
         
         // sender.setImage(UIImage(systemName: "checkmark.circle"), for: .normal) // works but doesnt disappear if another disappears.
-        // print(backgroundColor)
+        print(backgroundColor)
         
         let color = ColorName(rawValue: sender.tag) ?? .purple
         delegate?.didSelectColor(backgroundColor: backgroundColor ?? .red, colorName: color)
         
-        UserSetting.shared.updateDefaults(with: backgroundColor, key: UserSettingKey.backgroundColor)
-        
+        UserSetting.shared.updateColor(with: sender.tag)
         
     }
     
