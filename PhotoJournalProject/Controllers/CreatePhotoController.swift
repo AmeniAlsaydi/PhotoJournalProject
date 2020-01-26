@@ -50,7 +50,22 @@ class CreatePhotoController: UIViewController {
         imagePickerController.delegate = self
         checkCamera()
         updateUI()
+        addDoneToKeyBoard()
         
+    }
+    
+    @objc private func doneClicked() {
+        view.endEditing(true)
+        
+    }
+    
+    private func addDoneToKeyBoard() {
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let donebutton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done , target: self, action: #selector(self.doneClicked))
+        toolbar.setItems([donebutton], animated: true)
+        captionTextView.inputAccessoryView = toolbar
     }
     
     private func checkCamera() {

@@ -30,6 +30,7 @@ class SettingsController: UIViewController {
     override func viewWillLayoutSubviews() {
         let buttons = [pinkButton, greenButton, yellowButon]
         
+        
         buttons.map { $0?.layer.cornerRadius = ($0?.frame.width ?? 1)/2 }
 
     }
