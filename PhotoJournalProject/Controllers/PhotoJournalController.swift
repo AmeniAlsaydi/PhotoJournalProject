@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class PhotoJournalController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -16,19 +17,18 @@ class PhotoJournalController: UIViewController {
     
     private let dataPersistence = PersistenceHelper(filename: "journalEntries.plist")
     
+    private var jouralEntries = [JournalEntry]() {
+           didSet {
+               collectionView.reloadData() // reload collection view fucntions once an entry is added // instead have a function that appendsit (inserts)
+           }
+       }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
         
         loadJournalEntries()
-    }
-    
-    
-    private var jouralEntries = [JournalEntry]() {
-        didSet {
-            collectionView.reloadData() // reload collection view fucntions once an entry is added
-        }
     }
     
     private func loadJournalEntries() {
@@ -132,6 +132,8 @@ extension PhotoJournalController: CreateVCDelegate {
         // I passed it to an array of journal entries and reloading the collection view [below]
         jouralEntries.append(journalEntry)
         
+        // here
+        
         do {
             try dataPersistence.create(entry: journalEntry)
         } catch {
@@ -188,8 +190,6 @@ extension PhotoJournalController: ImageCellDelegate {
         
         present(alertController, animated: true)
     }
-    
-    
 }
 
 extension PhotoJournalController: SettingsDelegate {

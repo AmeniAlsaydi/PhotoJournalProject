@@ -8,9 +8,12 @@
 
 import UIKit
 
+import AVFoundation // we want to use AVMakeRect() to maintain image aspect ratio
+
+
 enum PhotoState: String {
-  case newPhoto
-  case existingPhoto
+    case newPhoto
+    case existingPhoto
 }
 
 protocol CreateVCDelegate: AnyObject {
@@ -20,7 +23,7 @@ protocol CreateVCDelegate: AnyObject {
 }
 
 class CreatePhotoController: UIViewController {
-
+    
     // outlets
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
@@ -90,15 +93,30 @@ class CreatePhotoController: UIViewController {
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         
         // TODO: fix this so that the default image and caption arent added once the save button is pressed.
-
+        
         // create the journalEntry
         
-        guard let imageData = imageView.image?.jpegData(compressionQuality: 1.0) else {
-        print("Couldnt convert image to data")
-        return
+        let thisImage = imageView.image
+        
+        guard let image = thisImage else {
+            print("image is nil")
+            return
         }
-
-        let journalEntry = JournalEntry(imageData: imageData, caption: captionTextView.text, date: Date())
+        // we will resize image: the size for the resizing of the image
+        let size = UIScreen.main.bounds.size
+        
+        //we will maintain the aspect ratio of the image
+        
+        let rect = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
+        
+        // resize image
+        let resizeImage = image.resizeImage(to: rect.size.width, height: rect.size.height)
+        
+        guard let resizedImageData = resizeImage.jpegData(compressionQuality: 1.0) else {
+            return
+        }
+        
+        let journalEntry = JournalEntry(imageData: resizedImageData, caption: captionTextView.text, date: Date())
         
         switch photoState {
         case .newPhoto:
@@ -131,6 +149,8 @@ extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationCo
         }
         imageView.image = image
         
+        
+        
         dismiss(animated: true)
     }
     
@@ -150,4 +170,15 @@ extension CreatePhotoController: UITextViewDelegate {
         saveButton.isEnabled = true
     }
     
+}
+
+// pass a size size and returns an image
+extension UIImage {
+    func resizeImage(to width: CGFloat, height: CGFloat) -> UIImage {
+        let size = CGSize(width: width, height: height)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { (context) in
+            self.draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
 }
