@@ -25,7 +25,7 @@ class ImageCell: UICollectionViewCell {
 
     }
     
-    var delegate: ImageCellDelegate?
+    weak var delegate: ImageCellDelegate? // has to be weak, stromg reference
     
     var photoJournal: JournalEntry?
     

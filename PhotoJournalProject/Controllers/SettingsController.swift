@@ -33,7 +33,7 @@ class SettingsController: UIViewController {
     var backgroundColor: UIColor?
     var direction = Direction.vertical
     
-    var delegate: SettingsDelegate? // making this a weak didnt work
+    weak var delegate: SettingsDelegate? // making this a weak didnt work
     
     override func viewDidLoad() {
         super.viewDidLoad()
