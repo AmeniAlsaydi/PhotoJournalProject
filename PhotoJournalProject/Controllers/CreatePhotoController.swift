@@ -30,6 +30,8 @@ class CreatePhotoController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    private var selectedImage: UIImage?
+    
     private var imagePickerController = UIImagePickerController()
     
     weak var delegate: CreateVCDelegate?
@@ -84,6 +86,13 @@ class CreatePhotoController: UIViewController {
             captionTextView.text = photo.caption
             imageView.image = UIImage(data: photo.imageData)
             saveButton.title = "Update"
+            saveButton.isEnabled = true
+        }
+    }
+    
+    private func checkfeilds() {
+        if selectedImage != nil && captionTextView.text != "Enter Caption" {
+            saveButton.isEnabled = true
         }
     }
     
@@ -110,9 +119,9 @@ class CreatePhotoController: UIViewController {
         
         // create the journalEntry
         
-        let thisImage = imageView.image
+        let theImage = imageView.image
         
-        guard let image = thisImage else {
+        guard let image = theImage else {
             print("image is nil")
             return
         }
@@ -159,7 +168,11 @@ extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationCo
             print("image not found")
             return
         }
-        imageView.image = image
+        selectedImage = image
+        imageView.image = selectedImage
+        
+        checkfeilds()
+        
         dismiss(animated: true)
     }
 }
@@ -172,10 +185,13 @@ extension CreatePhotoController: UITextViewDelegate {
         case .existingPhoto:
             break
         case .newPhoto:
-            textView.text = ""
+            if textView.text == "Enter Caption" {
+                textView.text = ""
+            }
         }
         
-        saveButton.isEnabled = true
+      checkfeilds()
+        
     }
 }
 
