@@ -113,7 +113,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Photos" id="pKV-c2-LHJ">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="96r-wU-F2K">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-settings-25" id="96r-wU-F2K">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="settingsButtonPressed:" destination="BYZ-38-t0r" id="Udo-2r-L54"/>
@@ -368,6 +368,7 @@
         <image name="2-way-arrow.up" width="180" height="155"/>
         <image name="camera" catalog="system" width="64" height="48"/>
         <image name="ellipsis.circle" catalog="system" width="64" height="60"/>
+        <image name="icons8-settings-25" width="25" height="25"/>
         <image name="photo" catalog="system" width="64" height="46"/>
         <image name="photo.on.rectangle" catalog="system" width="64" height="48"/>
         <image name="placeholder-image" width="1200" height="500"/>
