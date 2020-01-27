@@ -190,19 +190,29 @@ extension PhotoJournalController: ImageCellDelegate {
             
             createPhotoController.delegate = self 
             
-            createPhotoController.photo = photoJournal // coming from the cell
-            // in the createVC have a property observer for the photo var, and when its set change the photoState to exisiting? 
+            createPhotoController.photo = photoJournal  
+            
             self?.present(createPhotoController, animated: true)
         }
         
+        
+        let shareAction = UIAlertAction(title: "Share", style: .default) { [weak self]
+        alertAction in
+            
+            let index = self?.jouralEntries.firstIndex(of: photoJournal) ?? 0
+            let entry = self?.jouralEntries[index]
+            
+            let image = UIImage(data: entry!.imageData)
+            let activityController = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
+            self?.present(activityController, animated: true)
+              
+        }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self]
             alertAction in
             
             let index = self?.jouralEntries.firstIndex(of: photoJournal) ?? 0
-            
             self?.jouralEntries.remove(at: index)
-            
             try? self?.dataPersistence.delete(entry: index)
             
         }
@@ -211,6 +221,7 @@ extension PhotoJournalController: ImageCellDelegate {
         
         alertController.addAction(deleteAction)
         alertController.addAction(editAction)
+        alertController.addAction(shareAction)
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true)

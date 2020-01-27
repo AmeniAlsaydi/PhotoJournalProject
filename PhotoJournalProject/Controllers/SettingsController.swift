@@ -32,7 +32,9 @@ class SettingsController: UIViewController {
     @IBOutlet weak var sideButton: UIButton!
     @IBOutlet weak var upButton: UIButton!
     
-    lazy var buttons: [UIButton] = [pinkButton, greenButton, yellowButon, sideButton, upButton]
+    lazy var colorButtons: [UIButton] = [pinkButton, greenButton, yellowButon]
+    
+    lazy var directionButtons: [UIButton] = [sideButton, upButton]
     
     var backgroundColor: UIColor?
     var direction = Direction.vertical
@@ -44,13 +46,18 @@ class SettingsController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        _ = buttons.map { $0.layer.cornerRadius = ($0.frame.width )/2 }
+        _ = colorButtons.map { $0.layer.cornerRadius = ($0.frame.width )/2 }
+        _ = directionButtons.map { $0.layer.cornerRadius = ($0.frame.width )/2 }
     }
     
     @IBAction func colorWasSelected(_ sender: UIButton) {
         backgroundColor = sender.backgroundColor
         
-        // sender.setImage(UIImage(systemName: "checkmark.circle"), for: .normal) // works but doesnt disappear if another disappears.
+        _ = colorButtons.map { $0.setImage(nil, for: .normal) }
+        
+        sender.tintColor = .black
+        sender.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+        
         
         let color = ColorName(rawValue: sender.tag) ?? .purple
         delegate?.didSelectColor(backgroundColor: backgroundColor ?? .red, colorName: color)
@@ -70,9 +77,12 @@ class SettingsController: UIViewController {
         delegate?.didSelectDirection(direction: direction)
         UserSetting.shared.updateDirection(with: direction)
         
-        
-        
     }
+    
+    @IBAction func applyWasPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
     
 
 }

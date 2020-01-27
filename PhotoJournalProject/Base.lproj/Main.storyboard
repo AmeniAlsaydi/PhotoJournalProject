@@ -113,7 +113,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Photos" id="pKV-c2-LHJ">
-                        <barButtonItem key="rightBarButtonItem" image="gear" catalog="system" id="96r-wU-F2K">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="96r-wU-F2K">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="settingsButtonPressed:" destination="BYZ-38-t0r" id="Udo-2r-L54"/>
@@ -163,6 +163,9 @@
                                     <constraint firstAttribute="width" constant="45" id="7Vq-kj-AOK"/>
                                     <constraint firstAttribute="height" constant="45" id="N6g-rI-AEj"/>
                                 </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="colorWasSelected:" destination="HdS-Cm-3U8" eventType="touchUpInside" id="ok9-2I-E03"/>
                                 </connections>
@@ -174,6 +177,9 @@
                                     <constraint firstAttribute="height" constant="45" id="8QR-LE-zsf"/>
                                     <constraint firstAttribute="width" constant="45" id="cm2-Tb-p2Q"/>
                                 </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="colorWasSelected:" destination="HdS-Cm-3U8" eventType="touchUpInside" id="3Gs-nx-TYZ"/>
                                 </connections>
@@ -209,7 +215,14 @@
                             <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="neb-qt-gx7">
                                 <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                                 <items>
-                                    <navigationItem title="Settings" id="XvN-wm-MA4"/>
+                                    <navigationItem title="Settings" id="XvN-wm-MA4">
+                                        <barButtonItem key="rightBarButtonItem" title="Apply" id="thm-cM-PXa">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="applyWasPressed:" destination="HdS-Cm-3U8" id="C6X-rP-th9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -355,7 +368,6 @@
         <image name="2-way-arrow.up" width="180" height="155"/>
         <image name="camera" catalog="system" width="64" height="48"/>
         <image name="ellipsis.circle" catalog="system" width="64" height="60"/>
-        <image name="gear" catalog="system" width="64" height="58"/>
         <image name="photo" catalog="system" width="64" height="46"/>
         <image name="photo.on.rectangle" catalog="system" width="64" height="48"/>
         <image name="placeholder-image" width="1200" height="500"/>
