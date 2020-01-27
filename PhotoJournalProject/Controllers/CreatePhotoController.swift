@@ -97,7 +97,8 @@ class CreatePhotoController: UIViewController {
     
     @IBAction func cameraButtonPressed(_ sender: UIBarButtonItem) {
         
-        imagePickerController.sourceType = .camera
+        imagePickerController.sourceType = UIImagePickerController.SourceType.camera
+        
         present(imagePickerController, animated: true)
     }
     
@@ -138,12 +139,10 @@ class CreatePhotoController: UIViewController {
             guard let photo = photo else { 
                 fatalError("no photo journal passed")
             }
-            
             delegate?.didUpdateJournalEntry(oldEntry: photo, newEntry: journalEntry)
         }
         
         self.dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -153,10 +152,10 @@ class CreatePhotoController: UIViewController {
 }
 
 extension CreatePhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) { // Any
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // we need to access the UIImagePickerController.InfoKey.orignalImage key to get the UIImage that was selected
         
-        guard let image = info[UIImagePickerController.InfoKey.originalImage]  as? UIImage else { // uncropped image
+        guard let image = info[UIImagePickerController.InfoKey.originalImage]  as? UIImage else {
             print("image not found")
             return
         }

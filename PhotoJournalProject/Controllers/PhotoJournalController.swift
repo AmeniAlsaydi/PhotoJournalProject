@@ -190,7 +190,7 @@ extension PhotoJournalController: ImageCellDelegate {
             
             createPhotoController.delegate = self 
             
-            createPhotoController.photo = photoJournal  
+            createPhotoController.photo = photoJournal
             
             self?.present(createPhotoController, animated: true)
         }
@@ -241,7 +241,7 @@ extension PhotoJournalController: SettingsDelegate {
         }
     }
     
-    func didSelectColor(backgroundColor: UIColor, colorName: ColorName) {
+    func didSelectColor(backgroundColor: UIColor) {
         
         view.backgroundColor = backgroundColor
         toolbar.barTintColor = backgroundColor

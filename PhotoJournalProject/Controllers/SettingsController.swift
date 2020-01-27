@@ -8,19 +8,13 @@
 
 import UIKit
 
-enum ColorName: Int {
-    case purple = 0
-    case green = 1
-    case yellow = 2
-}
-
 enum Direction: String {
     case horizontal
     case vertical
 }
 
 protocol SettingsDelegate: AnyObject {
-    func didSelectColor(backgroundColor: UIColor, colorName: ColorName)
+    func didSelectColor(backgroundColor: UIColor)
     func didSelectDirection(direction: Direction)
 }
 
@@ -58,10 +52,7 @@ class SettingsController: UIViewController {
         sender.tintColor = .black
         sender.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
         
-        
-        let color = ColorName(rawValue: sender.tag) ?? .purple
-        delegate?.didSelectColor(backgroundColor: backgroundColor ?? .red, colorName: color)
-        
+        delegate?.didSelectColor(backgroundColor: backgroundColor ?? .red)
         UserSetting.shared.updateColor(with: sender.tag)
         
     }
@@ -82,7 +73,4 @@ class SettingsController: UIViewController {
     @IBAction func applyWasPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
-    
-    
-
 }
